@@ -1,8 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './slice'
-
+import TodoReducer from './TodoSlice'
 export const store = configureStore({
   reducer: {
-    counter: counterReducer
+      todos: TodoReducer
   }
 })
