@@ -7,16 +7,17 @@ function TodoList({todo}) {
     const [msg, setmsg] = useState(todo.message);
     const dispatch=useDispatch();
     const istoggleCompleted=()=>{
-        dispatch(IsToggle(todo.id))
+        dispatch(IsToggle({id : todo.id}))
     }
     const isdeleteTodo=()=>{
-        dispatch(DeletTodo(todo.id))
+        dispatch(DeletTodo({id:todo.id}))
     }
     const editTodo=()=>{
         dispatch(UpdateTodo({
             id:todo.id,
-            mesaage:msg
+            Nmessage:msg
         }))
+        setisTodoEditable(false)
     }
     return (
         <>
@@ -47,7 +48,7 @@ function TodoList({todo}) {
                 className={`flex-1 mx-4 bg-transparent outline-none text-sm font-medium transition-all ${
                     isTodoEditable ? "text-indigo-300 drop-shadow-[0_0_8px_rgba(165,180,252,0.5)]" : "text-zinc-200"
                 } ${todo.isChecked ? "line-through text-zinc-600" : ""}`}
-                value={msg}
+                value={todo.message}
                 onChange={(e) => setmsg(e.target.value)}
                 readOnly={!isTodoEditable}
             />

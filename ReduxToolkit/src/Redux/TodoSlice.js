@@ -9,7 +9,7 @@ const TodoSlice = createSlice({
     AddTodo: (state, action) => {
       const newTodo = { 
         id: nanoid(), 
-        message: action.payload, 
+        message: action.payload.message, 
         isChecked: false 
       };
       // FIX: state.push(newTodo) is enough. 
@@ -28,12 +28,12 @@ const TodoSlice = createSlice({
     DeletTodo: (state, action) => {
       // FIX: If you pass just the ID string in dispatch, use action.payload.
       // If you pass an object, use action.payload.id.
-      return state.filter((t) => t.id !== action.payload);
+      return state.filter((t) => t.id !== action.payload.id);
     },
 
     IsToggle: (state, action) => {
       // FIX: 'action.payloadload' was a typo, and 'tado' was a typo.
-      const todo = state.find((t) => t.id === action.payload);
+      const todo = state.find((t) => t.id === action.payload.id);
       if (todo) {
         todo.isChecked = !todo.isChecked;
       }

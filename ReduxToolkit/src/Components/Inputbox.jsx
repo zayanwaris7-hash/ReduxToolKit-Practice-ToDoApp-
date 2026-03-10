@@ -14,7 +14,7 @@ const InputBox = () => {
     
     // 2. Fixed typo: Changed 'Text' to 'msg'
     if (msg.trim()) { 
-        dispatch(AddTodo(msg));
+        dispatch(AddTodo({message:msg}));
         setmsg("");
     }
   };
